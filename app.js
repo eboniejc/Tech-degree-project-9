@@ -16,6 +16,15 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 
+//database connection
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Database connection has been successfully established .');
+  })
+  .catch((error) => {
+    console.error('Unable to connect to the database:', error);
+  });
 
 // setup a friendly greeting for the root route
 app.get('/', (req, res) => {
